@@ -9,8 +9,6 @@ end
 gem 'rails', '~> 5.1.2'
 gem 'slim-rails'
 
-gem 'pg'
-
 gem 'sprockets'
 gem 'sass-rails'
 gem 'coffee-rails'
@@ -28,3 +26,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
+
+# Added at 2019-12-07 05:29:32 +0000 by root:
+gem 'pg'
+gem "sqlite3", "~> 1.3.13"

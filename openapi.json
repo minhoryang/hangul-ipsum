@@ -1,0 +1,87 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/generator": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "summary": "지금 당장 무의미한 한글 문장을 생성합니다.",
+        "operationId": "get_ipsum",
+        "tags": [
+          "Hangul-Ipsum"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "paragraphs": {
+                    "description": "몇 문장이나 생성하시겠습니까?",
+                    "type": "integer",
+                    "format": "int64",
+                    "default": 1
+                  },
+                  "length": {
+                    "description": "생성할 문장 길이입니다.",
+                    "type": "string",
+                    "enum": [
+                      "long",
+                      "medium",
+                      "short"
+                    ],
+                    "default": "short"
+                  },
+                  "text_source_ids[]": {
+                    "description": "샘플로 사용할 데이터를 고릅니다.",
+                    "type": "integer",
+                    "format": "int64",
+                    "enum": [
+                      1,
+                      2
+                    ],
+                    "default": 1
+                  }
+                },
+                "required": [
+                  "paragraphs",
+                  "length",
+                  "text_source_ids[]"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "Hangul-Ipsum",
+    "version": "0.1.0",
+    "description": "# 한글입숨\n"
+  },
+  "tags": [
+    {
+      "name": "Hangul-Ipsum",
+      "description": "무의미한 한글 텍스트 생성기입니다"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://endpoint.ainize.ai/minhoryang/hangul-ipsum"
+    }
+  ],
+  "components": {
+    "responses": {
+      "ParseError": {
+        "description": "When a mask can't be parsed"
+      },
+      "MaskError": {
+        "description": "When any error occurs on mask"
+      }
+    }
+  }
+}

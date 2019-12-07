@@ -15,15 +15,14 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  adapter: sqlite3
+  database: storage.db
   pool: 5
+  timeout: 5000
 
 development:
   <<: *default
-  database: hangul_ipsum_development
+  #database: hangul_ipsum_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -79,5 +78,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: sqlite3
+  database: storage.db
+  pool: 5
+  timeout: 5000
